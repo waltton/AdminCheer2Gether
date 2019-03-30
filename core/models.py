@@ -89,4 +89,4 @@ class GroupMessage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '#{}: {}'.format(self.id, self.user.username)
+        return '#{}: {} => {}'.format(self.id, self.user.username, self.message)
