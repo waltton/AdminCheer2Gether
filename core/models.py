@@ -33,7 +33,9 @@ class News(models.Model):
     title = models.TextField()
     message = models.TextField()
     media = models.URLField()
+    banner_media = models.URLField(null=True)
     tags = models.ManyToManyField(Tag)
+    banner = models.BooleanField()
 
     created_at = models.DateTimeField(auto_now_add=True)
 
