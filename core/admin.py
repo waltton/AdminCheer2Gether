@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Sport, Tag, User, News, Reaction, UserGroup
+from core.models import Sport, Tag, User, News, Reaction, UserGroup, GroupMessage
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -19,3 +19,4 @@ admin.site.register(User)
 admin.site.register(News, NewsAdmin)
 admin.site.register(Reaction)
 admin.site.register(UserGroup)
+admin.site.register(GroupMessage)
