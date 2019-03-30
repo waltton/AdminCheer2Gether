@@ -28,6 +28,16 @@ class User(models.Model):
         return '#{}: {}'.format(self.id, self.username)
 
 
+class UserTag(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    tags = models.ForeignKey(Tag, on_delete=models.PROTECT)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.user)
+
+
 class News(models.Model):
     sport = models.ForeignKey(Sport, on_delete=models.PROTECT, null=True)
     title = models.TextField()
