@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from core.models import Tag, User, News, Reaction, UserGroup
+from core.models import Sport, Tag, User, News, Reaction, UserGroup
 
 
+admin.site.register(Sport)
 admin.site.register(Tag)
 admin.site.register(User)
 admin.site.register(News)
