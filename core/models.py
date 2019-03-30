@@ -1,6 +1,13 @@
 from django.db import models
 
 
+class Sport(models.Model):
+    title = models.TextField()
+    slug = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Tag(models.Model):
     title = models.TextField()
     slug = models.TextField()
@@ -16,6 +23,7 @@ class User(models.Model):
 
 
 class News(models.Model):
+    sport = models.ForeignKey(Sport, on_delete=models.PROTECT, null=True)
     title = models.TextField()
     message = models.TextField()
     media = models.URLField()
