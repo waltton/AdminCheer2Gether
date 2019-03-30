@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'udp&yez&#6@qk0=!h(5klm#)t)&a$j71i4npna#!q1hka_vv2v'
+SECRET_KEY = os.getenv('C2G_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'c2gdj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('C2G_DB_NAME'),
+        'USER': os.getenv('C2G_DB_USER'),
+        'PASSWORD': os.getenv('C2G_DB_PASSWORD'),
+        'HOST': os.getenv('C2G_DB_HOST'),
+        'PORT': os.getenv('C2G_DB_PORT'),
     }
 }
 
