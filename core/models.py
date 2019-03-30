@@ -27,7 +27,7 @@ class News(models.Model):
     title = models.TextField()
     message = models.TextField()
     media = models.URLField()
-    tags = models.ForeignKey(Tag, on_delete=models.PROTECT)
+    tags = models.ManyToManyField(Tag)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
