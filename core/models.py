@@ -33,7 +33,7 @@ class News(models.Model):
     title = models.TextField()
     message = models.TextField()
     media = models.URLField()
-    banner_media = models.URLField(null=True)
+    banner_media = models.URLField(null=True, blank=True)
     tags = models.ManyToManyField(Tag)
     banner = models.BooleanField()
 
