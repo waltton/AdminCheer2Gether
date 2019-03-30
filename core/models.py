@@ -14,12 +14,18 @@ class Tag(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.title)
+
 
 class User(models.Model):
     username = models.TextField()
     twitter_id = models.TextField()  # tem que ver q dados precisamos do twitter
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.username)
 
 
 class News(models.Model):
@@ -31,6 +37,9 @@ class News(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.title)
+
 
 class Reaction(models.Model):
     news = models.ForeignKey(News, on_delete=models.PROTECT)
@@ -39,9 +48,15 @@ class Reaction(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.message)
+
 
 class UserGroup(models.Model):
     title = models.TextField()
     user = models.ManyToManyField(User)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.title)
