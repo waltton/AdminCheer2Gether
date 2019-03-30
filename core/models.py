@@ -2,15 +2,18 @@ from django.db import models
 
 
 class Sport(models.Model):
-    title = models.TextField()
-    slug = models.TextField()
+    title = models.TextField(unique=True)
+    slug = models.TextField(unique=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.title)
+
 
 class Tag(models.Model):
-    title = models.TextField()
-    slug = models.TextField()
+    title = models.TextField(unique=True)
+    slug = models.TextField(unique=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -19,7 +22,7 @@ class Tag(models.Model):
 
 
 class User(models.Model):
-    username = models.TextField()
+    username = models.TextField(unique=True)
     twitter_id = models.TextField()  # tem que ver q dados precisamos do twitter
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -29,8 +32,11 @@ class User(models.Model):
 
 
 class UserTag(models.Model):
+    class Meta:
+        unique_together = ('user', 'tag', )
+
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    tags = models.ForeignKey(Tag, on_delete=models.PROTECT)
+    tag = models.ForeignKey(Tag, on_delete=models.PROTECT)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
