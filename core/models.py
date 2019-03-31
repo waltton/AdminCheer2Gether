@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 
 
 class Sport(models.Model):
@@ -90,3 +91,12 @@ class GroupMessage(models.Model):
 
     def __str__(self):
         return '#{}: {} => {}'.format(self.id, self.user.username, self.message)
+
+
+class WebSocketMessages(models.Model):
+    data = JSONField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '#{}: {}'.format(self.id, self.data)
